@@ -28,9 +28,10 @@ public class ProductServiceImpl implements ProductService {
         productRepository.findAll().forEach(product -> {
             ProductResponseDto productResponseDto = new ProductResponseDto();
 
-            productResponseDto.setNo(product.getNo());
+            productResponseDto.setNo(product.getProduct_no());
             productResponseDto.setName(product.getName());
             productResponseDto.setPrice(product.getPrice());
+            productResponseDto.setUser_no(product.getUser().getUser_no());
             productResponseDto.setCreated_at(product.getCreated_at());
             productResponseDto.setUpdated_at(product.getUpdated_at());
 
@@ -40,14 +41,15 @@ public class ProductServiceImpl implements ProductService {
         return productResponseDtoList;
     }
 
-    public ProductResponseDto getOneProductByNo(@PathVariable Long no){
-        Product product = productRepository.findById(no).get();
+    public ProductResponseDto getOneProductByNo(@PathVariable Long product_no){
+        Product product = productRepository.findById(product_no).get();
 
         ProductResponseDto productResponseDto = new ProductResponseDto();
 
-        productResponseDto.setNo(product.getNo());
+        productResponseDto.setNo(product.getProduct_no());
         productResponseDto.setName(product.getName());
         productResponseDto.setPrice(product.getPrice());
+        productResponseDto.setUser_no(product.getUser().getUser_no());
         productResponseDto.setCreated_at(product.getCreated_at());
         productResponseDto.setUpdated_at(product.getUpdated_at());
 
@@ -63,19 +65,20 @@ public class ProductServiceImpl implements ProductService {
         Product savedProduct = productRepository.save(product);
 
         ProductResponseDto productResponseDto = new ProductResponseDto();
-        productResponseDto.setNo(savedProduct.getNo());
+        productResponseDto.setNo(savedProduct.getProduct_no());
         productResponseDto.setName(savedProduct.getName());
         productResponseDto.setPrice(savedProduct.getPrice());
+        productResponseDto.setUser_no(product.getUser().getUser_no());
         productResponseDto.setCreated_at(savedProduct.getCreated_at());
         productResponseDto.setUpdated_at(savedProduct.getUpdated_at());
 
         return productResponseDto;
     }
 
-    public ProductResponseDto updateOneProduct(Long no, ProductRequestDto productRequestDto){
+    public ProductResponseDto updateOneProduct(Long product_no, ProductRequestDto productRequestDto){
         Product product = new Product();
 
-        product.setNo(no);
+        product.setProduct_no(product_no);
         product.setName(productRequestDto.getName());
         product.setPrice(productRequestDto.getPrice());
 
@@ -83,16 +86,17 @@ public class ProductServiceImpl implements ProductService {
 
         ProductResponseDto productResponseDto = new ProductResponseDto();
 
-        productResponseDto.setNo(updatedProduct.getNo());
+        productResponseDto.setNo(updatedProduct.getProduct_no());
         productResponseDto.setName(updatedProduct.getName());
         productResponseDto.setPrice(updatedProduct.getPrice());
+        productResponseDto.setUser_no(product.getUser().getUser_no());
         productResponseDto.setCreated_at(updatedProduct.getCreated_at());
         productResponseDto.setUpdated_at(updatedProduct.getUpdated_at());
 
         return productResponseDto;
     }
 
-    public void deleteOneProduct(Long no){
-        productRepository.deleteById(no);
+    public void deleteOneProduct(Long product_no){
+        productRepository.deleteById(product_no);
     }
 }

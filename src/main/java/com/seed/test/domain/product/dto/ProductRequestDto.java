@@ -12,4 +12,6 @@ public class ProductRequestDto {
     private String name;
 
     private Long price;
+
+    private Long user_no;
 }

@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
         userRepository.findAll().forEach(user -> {
             UserResponseDto userResponseDto = new UserResponseDto();
 
-            userResponseDto.setNo(user.getNo());
+            userResponseDto.setUser_no(user.getUser_no());
             userResponseDto.setId(user.getId());
             userResponseDto.setPassword(user.getPassword());
             userResponseDto.setName(user.getName());
@@ -43,12 +43,12 @@ public class UserServiceImpl implements UserService{
         return userResponseDtoList;
     }
 
-    public UserResponseDto getOneUserByNo(@PathVariable Long no){
-        User user = userRepository.findById(no).get();
+    public UserResponseDto getOneUserByNo(@PathVariable Long user_no){
+        User user = userRepository.findById(user_no).get();
 
         UserResponseDto userResponseDto = new UserResponseDto();
 
-        userResponseDto.setNo(user.getNo());
+        userResponseDto.setUser_no(user.getUser_no());
         userResponseDto.setId(user.getId());
         userResponseDto.setPassword(user.getPassword());
         userResponseDto.setName(user.getName());
@@ -77,10 +77,10 @@ public class UserServiceImpl implements UserService{
         return userResponseDto;
     }
 
-    public UserResponseDto updateOneUser(Long no, UserRequestDto userRequestDto){
+    public UserResponseDto updateOneUser(Long user_no, UserRequestDto userRequestDto){
         User user = new User();
 
-        user.setNo(no);
+        user.setUser_no(user_no);
         user.setId(userRequestDto.getId());
         user.setPassword(userRequestDto.getPassword());
         user.setName(userRequestDto.getName());
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService{
 
         UserResponseDto userResponseDto = new UserResponseDto();
 
-        userResponseDto.setNo(updatedUser.getNo());
+        userResponseDto.setUser_no(updatedUser.getUser_no());
         userResponseDto.setId(updatedUser.getId());
         userResponseDto.setPassword(updatedUser.getPassword());
         userResponseDto.setName(updatedUser.getName());
@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService{
         return userResponseDto;
     }
 
-    public void deleteOneUser(Long no){
-        userRepository.deleteById(no);
+    public void deleteOneUser(Long user_no){
+        userRepository.deleteById(user_no);
     }
 }

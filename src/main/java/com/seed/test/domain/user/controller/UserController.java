@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @Operation(summary = "유저 모두 조회", description = "유저를 모두 조회합니다.")
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<UserResponseDto>> getAllUser(){
 
         List<UserResponseDto> userResponseDtoList = userService.getAllUser();
@@ -32,10 +32,10 @@ public class UserController {
     }
 
     @Operation(summary = "유저 한 건 조회", description = "유저 한 건을 조회합니다.")
-    @GetMapping("/{no}")
-    public ResponseEntity<UserResponseDto> getOneUserByNo(@PathVariable Long no){
+    @GetMapping("/{user_no}")
+    public ResponseEntity<UserResponseDto> getOneUserByNo(@PathVariable Long user_no){
 
-        UserResponseDto userResponseDto = userService.getOneUserByNo(no);
+        UserResponseDto userResponseDto = userService.getOneUserByNo(user_no);
 
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
@@ -50,20 +50,20 @@ public class UserController {
     }
 
     @Operation(summary = "유저 수정", description = "유저를 수정합니다.")
-    @PutMapping("/{no}")
-    public ResponseEntity<UserResponseDto> updateOneUser(@PathVariable Long no,
+    @PutMapping("/{user_no}")
+    public ResponseEntity<UserResponseDto> updateOneUser(@PathVariable Long user_no,
                                                       @RequestBody UserRequestDto userRequestDto){
 
-        UserResponseDto userResponseDto = userService.updateOneUser(no, userRequestDto);
+        UserResponseDto userResponseDto = userService.updateOneUser(user_no, userRequestDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
 
     @Operation(summary = "유저 삭제", description = "유저를 삭제합니다.")
-    @DeleteMapping("/{no}")
-    public ResponseEntity<String> deleteOneUser(@PathVariable Long no){
+    @DeleteMapping("/{user_no}")
+    public ResponseEntity<String> deleteOneUser(@PathVariable Long user_no){
 
-        userService.deleteOneUser(no);
+        userService.deleteOneUser(user_no);
 
         return ResponseEntity.status(HttpStatus.OK).body("유저가 삭제되었습니다.");
     }

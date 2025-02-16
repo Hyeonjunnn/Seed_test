@@ -9,12 +9,12 @@ public interface UserService {
 
     public List<UserResponseDto> getAllUser();
 
-    public UserResponseDto getOneUserByNo(Long no);
+    public UserResponseDto getOneUserByNo(Long user_no);
 
     public UserResponseDto saveOneUser(UserRequestDto userRequestDto);
 
-    public UserResponseDto updateOneUser(Long no, UserRequestDto userRequestDto);
+    public UserResponseDto updateOneUser(Long user_no, UserRequestDto userRequestDto);
 
-    public void deleteOneUser(Long no);
+    public void deleteOneUser(Long user_no);
 
 }

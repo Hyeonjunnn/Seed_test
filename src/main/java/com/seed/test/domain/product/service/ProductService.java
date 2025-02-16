@@ -11,12 +11,12 @@ public interface ProductService {
 
     public List<ProductResponseDto> getAllProduct();
 
-    public ProductResponseDto getOneProductByNo(Long no);
+    public ProductResponseDto getOneProductByNo(Long product_no);
 
     public ProductResponseDto saveOneProduct(ProductRequestDto productRequestDto);
 
-    public ProductResponseDto updateOneProduct(Long no, ProductRequestDto productRequestDto);
+    public ProductResponseDto updateOneProduct(Long product_no, ProductRequestDto productRequestDto);
 
-    public void deleteOneProduct(Long no);
+    public void deleteOneProduct(Long product_no);
 
 }

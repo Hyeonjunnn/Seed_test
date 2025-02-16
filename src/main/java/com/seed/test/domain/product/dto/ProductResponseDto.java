@@ -17,6 +17,8 @@ public class ProductResponseDto {
 
     private Long price;
 
+    private Long user_no;
+
     private LocalDateTime created_at;
 
     private LocalDateTime updated_at;
