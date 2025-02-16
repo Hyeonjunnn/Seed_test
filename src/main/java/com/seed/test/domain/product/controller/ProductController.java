@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "상품 API", description = "상품 CRUD API")
 @RestController
 @RequestMapping("/product")
@@ -20,7 +22,16 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @Operation(summary = "상품 조회", description = "상품을 조회합니다.")
+    @Operation(summary = "상품 모두 조회", description = "상품을 모두 조회합니다.")
+    @GetMapping("/")
+    public ResponseEntity<List<ProductResponseDto>> getAllProduct(){
+
+        List<ProductResponseDto> productResponseDtoList = productService.getAllProduct();
+
+        return ResponseEntity.status(HttpStatus.OK).body(productResponseDtoList);
+    }
+
+    @Operation(summary = "상품 한 건 조회", description = "상품 한 건을 조회합니다.")
     @GetMapping("/{no}")
     public ResponseEntity<ProductResponseDto> getOneProduct(@PathVariable Long no){
 

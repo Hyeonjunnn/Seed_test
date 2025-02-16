@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "유저 API", description = "유저 CRUD API")
 @RestController
 @RequestMapping("/user")
@@ -20,9 +22,18 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Operation(summary = "유저 조회", description = "유저를 조회합니다.")
+    @Operation(summary = "유저 모두 조회", description = "유저를 모두 조회합니다.")
+    @GetMapping("/")
+    public ResponseEntity<List<UserResponseDto>> getAllUser(){
+
+        List<UserResponseDto> userResponseDtoList = userService.getAllUser();
+
+        return ResponseEntity.status(HttpStatus.OK).body(userResponseDtoList);
+    }
+
+    @Operation(summary = "유저 한 건 조회", description = "유저 한 건을 조회합니다.")
     @GetMapping("/{no}")
-    public ResponseEntity<UserResponseDto> getOneUser(@PathVariable Long no){
+    public ResponseEntity<UserResponseDto> getOneUserByNo(@PathVariable Long no){
 
         UserResponseDto userResponseDto = userService.getOneUserByNo(no);
 

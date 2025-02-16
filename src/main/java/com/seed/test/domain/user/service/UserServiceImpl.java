@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -16,6 +20,27 @@ public class UserServiceImpl implements UserService{
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public List<UserResponseDto> getAllUser(){
+        List<UserResponseDto> userResponseDtoList = new ArrayList<>();
+
+
+        userRepository.findAll().forEach(user -> {
+            UserResponseDto userResponseDto = new UserResponseDto();
+
+            userResponseDto.setNo(user.getNo());
+            userResponseDto.setId(user.getId());
+            userResponseDto.setPassword(user.getPassword());
+            userResponseDto.setName(user.getName());
+            userResponseDto.setCreated_at(user.getCreated_at());
+            userResponseDto.setUpdated_at(user.getUpdated_at());
+
+            userResponseDtoList.add(userResponseDto);
+        });
+
+        System.out.println(Arrays.toString(new List[]{userResponseDtoList}));
+        return userResponseDtoList;
     }
 
     public UserResponseDto getOneUserByNo(@PathVariable Long no){

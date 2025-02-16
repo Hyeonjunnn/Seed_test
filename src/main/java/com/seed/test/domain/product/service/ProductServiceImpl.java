@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -16,6 +19,25 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
+    }
+
+    public List<ProductResponseDto> getAllProduct(){
+
+        List<ProductResponseDto> productResponseDtoList = new ArrayList<>();
+
+        productRepository.findAll().forEach(product -> {
+            ProductResponseDto productResponseDto = new ProductResponseDto();
+
+            productResponseDto.setNo(product.getNo());
+            productResponseDto.setName(product.getName());
+            productResponseDto.setPrice(product.getPrice());
+            productResponseDto.setCreated_at(product.getCreated_at());
+            productResponseDto.setUpdated_at(product.getUpdated_at());
+
+            productResponseDtoList.add(productResponseDto);
+        });
+
+        return productResponseDtoList;
     }
 
     public ProductResponseDto getOneProductByNo(@PathVariable Long no){
