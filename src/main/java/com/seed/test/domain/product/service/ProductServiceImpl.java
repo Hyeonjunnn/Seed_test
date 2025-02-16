@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
         return productResponseDto;
     }
 
-    public void deleteProduct(Long no){
+    public void deleteOneProduct(Long no){
         productRepository.deleteById(no);
     }
 }

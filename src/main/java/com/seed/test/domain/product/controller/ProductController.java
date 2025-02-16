@@ -31,7 +31,7 @@ public class ProductController {
 
     @Operation(summary = "상품 등록", description = "상품을 등록합니다.")
     @PostMapping()
-    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody ProductRequestDto productRequestDto){
+    public ResponseEntity<ProductResponseDto> createOneProduct(@RequestBody ProductRequestDto productRequestDto){
 
         ProductResponseDto productResponseDto = productService.saveOneProduct(productRequestDto);
 
@@ -40,7 +40,7 @@ public class ProductController {
 
     @Operation(summary = "상품 수정", description = "상품을 수정합니다.")
     @PutMapping("/{no}")
-    public ResponseEntity<ProductResponseDto> createProduct(@PathVariable Long no,
+    public ResponseEntity<ProductResponseDto> updateOneProduct(@PathVariable Long no,
                                                       @RequestBody ProductRequestDto productRequestDto){
 
         ProductResponseDto productResponseDto = productService.updateOneProduct(no, productRequestDto);
@@ -52,7 +52,7 @@ public class ProductController {
     @DeleteMapping("/{no}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long no){
 
-        productService.deleteProduct(no);
+        productService.deleteOneProduct(no);
 
         return ResponseEntity.status(HttpStatus.OK).body("상품이 삭제되었습니다.");
     }

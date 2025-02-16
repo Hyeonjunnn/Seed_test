@@ -1,6 +1,6 @@
 package com.seed.test.domain.user.entity;
 
-import com.seed.test.cmms.entity.BaseEntity;
+import com.seed.test.domain.cmms.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

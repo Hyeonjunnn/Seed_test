@@ -7,10 +7,10 @@ public interface UserService {
 
     public UserResponseDto getOneUserByNo(Long no);
 
-    public UserResponseDto saveUser(UserRequestDto userRequestDto);
+    public UserResponseDto saveOneUser(UserRequestDto userRequestDto);
 
-    public UserResponseDto updateUser(Long no, UserRequestDto userRequestDto);
+    public UserResponseDto updateOneUser(Long no, UserRequestDto userRequestDto);
 
-    public void deleteUser(Long no);
+    public void deleteOneUser(Long no);
 
 }

@@ -13,6 +13,6 @@ public interface ProductService {
 
     public ProductResponseDto updateOneProduct(Long no, ProductRequestDto productRequestDto);
 
-    public void deleteProduct(Long no);
+    public void deleteOneProduct(Long no);
 
 }

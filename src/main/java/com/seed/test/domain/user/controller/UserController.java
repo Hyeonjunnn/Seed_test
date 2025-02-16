@@ -31,28 +31,28 @@ public class UserController {
 
     @Operation(summary = "유저 등록", description = "유저를 등록합니다.")
     @PostMapping()
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto){
+    public ResponseEntity<UserResponseDto> createOneUser(@RequestBody UserRequestDto userRequestDto){
 
-        UserResponseDto userResponseDto = userService.saveUser(userRequestDto);
+        UserResponseDto userResponseDto = userService.saveOneUser(userRequestDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
 
     @Operation(summary = "유저 수정", description = "유저를 수정합니다.")
     @PutMapping("/{no}")
-    public ResponseEntity<UserResponseDto> createUser(@PathVariable Long no,
+    public ResponseEntity<UserResponseDto> updateOneUser(@PathVariable Long no,
                                                       @RequestBody UserRequestDto userRequestDto){
 
-        UserResponseDto userResponseDto = userService.updateUser(no, userRequestDto);
+        UserResponseDto userResponseDto = userService.updateOneUser(no, userRequestDto);
 
         return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
     }
 
     @Operation(summary = "유저 삭제", description = "유저를 삭제합니다.")
     @DeleteMapping("/{no}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long no){
+    public ResponseEntity<String> deleteOneUser(@PathVariable Long no){
 
-        userService.deleteUser(no);
+        userService.deleteOneUser(no);
 
         return ResponseEntity.status(HttpStatus.OK).body("유저가 삭제되었습니다.");
     }

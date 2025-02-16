@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
         return userResponseDto;
     }
 
-    public UserResponseDto saveUser(UserRequestDto userRequestDto){
+    public UserResponseDto saveOneUser(UserRequestDto userRequestDto){
         User user = new User();
 
         user.setId(userRequestDto.getId());
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService{
         return userResponseDto;
     }
 
-    public UserResponseDto updateUser(Long no, UserRequestDto userRequestDto){
+    public UserResponseDto updateOneUser(Long no, UserRequestDto userRequestDto){
         User user = new User();
 
         user.setNo(no);
@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService{
         return userResponseDto;
     }
 
-    public void deleteUser(Long no){
+    public void deleteOneUser(Long no){
         userRepository.deleteById(no);
     }
 }

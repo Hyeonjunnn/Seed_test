@@ -1,4 +1,4 @@
-package com.seed.test.cmms.entity;
+package com.seed.test.domain.cmms.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
